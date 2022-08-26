@@ -15,6 +15,7 @@ public class PrinicipalLocalDate {
 		System.out.println(ld.isAfter(ld2));
 		System.out.println(ld.isBefore(ld2));
 
+		System.out.println("prueba");
 	}
 
 }
