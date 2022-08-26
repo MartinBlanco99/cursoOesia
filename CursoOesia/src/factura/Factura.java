@@ -1,5 +1,7 @@
 package factura;
 
+import java.util.Objects;
+
 public class Factura implements Comparable<Factura> {
 
 	private String concepto;
@@ -53,6 +55,30 @@ public class Factura implements Comparable<Factura> {
 		else
 			return -1;
 	}
+
+	@Override
+	public String toString() {
+		return "Factura [concepto=" + concepto + ", numero=" + numero + ", importe=" + importe + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(numero);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Factura other = (Factura) obj;
+		return numero == other.numero;
+	}
+	
+	
 	
 	
 
