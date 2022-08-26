@@ -1,4 +1,4 @@
 Mario,Perez,10/02/2001
-Julia,Blanca,02/06/200
+Julia,Blanca,02/06/1975
 Pepe,Suarez,06/10/1999
 Marta,Fernandez,20/06/1980

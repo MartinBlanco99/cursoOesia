@@ -36,7 +36,12 @@ public class Persona {
 	public boolean esMayor(Persona per) {
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(getFechaNacimiento());
-		return !cal.after(per.getFechaNacimiento());
+		
+		
+		Calendar cal2 = Calendar.getInstance();
+		cal2.setTime(per.getFechaNacimiento());
+		
+		return !cal.after(cal2);
 	}
 	
 

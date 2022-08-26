@@ -9,5 +9,9 @@ public class Principal2 {
 		int num = sc.nextInt();
 		
 		System.out.println(num);
+		
+		System.out.println("lee texto");
+		String texto = sc.next();
+		System.out.println(texto);
 	}
 }
