@@ -1,16 +1,17 @@
 package jdbc2;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 public class PersonaAR {
 
-	static final String INSER = "SELECT * FROM Personas";
+	static final String SELECCIONAR = "SELECT * FROM Personas";
 	static final String INSERCION = "Insert into Personas values(?,?,?,?,?)";
 	static final String BORRAR = "DELETE from Personas where dni=?";
 
@@ -82,13 +83,10 @@ public class PersonaAR {
 
 	public static List<PersonaAR> buscarTodos() {
 
-		Configurador c= Configurador.getInstance();
 		List<PersonaAR> listaPersonas = new ArrayList<PersonaAR>();
 
-		try (Connection conn = DriverManager.getConnection(c.getUrl(),c.getUser(),c.getPassword());
-				PreparedStatement sentencia = conn.prepareStatement(INSER);
-
-		) {
+		try (PreparedStatement sentencia = DataBaseHelper.crearSentenciaPreparada(SELECCIONAR, null);
+				Connection conn = sentencia.getConnection();) {
 
 			try (ResultSet rs = sentencia.executeQuery();) {
 
@@ -100,15 +98,13 @@ public class PersonaAR {
 					persona.setEdad(rs.getInt("edad"));
 					persona.setPais(rs.getString("pais"));
 					listaPersonas.add(persona);
-
 				}
 			} catch (SQLException e) {
-
+				throw new RuntimeException("error de datos", e);
 			}
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new RuntimeException("error de datos", e);
 		}
 
 		return listaPersonas;
@@ -117,42 +113,22 @@ public class PersonaAR {
 
 	public void insertar() {
 
-		Configurador c= Configurador.getInstance();
-		
-		try (Connection conn = DriverManager.getConnection(c.getUrl(),c.getUser(),c.getPassword());
-				PreparedStatement sentencia = conn.prepareStatement(INSERCION);
-
-		) {
-
-			sentencia.setString(1, getDni());
-			sentencia.setString(2, getNombre());
-			sentencia.setString(3, getApellidos());
-			sentencia.setInt(4, getEdad());
-			sentencia.setString(5, getPais());
+		try (PreparedStatement sentencia = DataBaseHelper.crearSentenciaPreparada(INSERCION, getDni(), getNombre(),
+				getApellidos(), getEdad(), getPais()); Connection conn = sentencia.getConnection();) {
 			sentencia.executeUpdate();
-
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new RuntimeException("error de datos", e);
 		}
 
 	}
-	
+
 	public void borrar() {
 
-		
-		Configurador c= Configurador.getInstance();
-		try (Connection conn = DriverManager.getConnection(c.getUrl(),c.getUser(),c.getPassword());
-				PreparedStatement sentencia = conn.prepareStatement(BORRAR);
-
-		) {
-
-			sentencia.setString(1, getDni());
+		try (PreparedStatement sentencia = DataBaseHelper.crearSentenciaPreparada(BORRAR, getDni());
+				Connection conn = sentencia.getConnection();) {
 			sentencia.executeUpdate();
-
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new RuntimeException("error de datos", e);
 		}
 
 	}
