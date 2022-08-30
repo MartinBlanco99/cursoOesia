@@ -6,12 +6,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class PersonaAR {
 
 	static final String SELECCIONAR = "SELECT * FROM Personas";
 	static final String SELECCIONAR_COMPRAS = "SELECT * FROM Compras where personas_dni=?";
 	static final String SELECCIONAR_UNA = "SELECT * FROM Personas where dni=?";
+	static final String SELECCIONAR_PERSONAS_COMPRAS = "SELECT * FROM Personas INNER JOIN Compras on Personas.dni=Compras.personas_dni ";
+
 	static final String INSERCION = "Insert into Personas values(?,?,?,?,?)";
 	static final String BORRAR = "DELETE from Personas where dni=?";
 
@@ -20,6 +23,8 @@ public class PersonaAR {
 	private String apellidos;
 	private int edad;
 	private String pais;
+	
+	private List <CompraAR> listaCompra = new ArrayList<CompraAR>();
 
 	public String getDni() {
 		return dni;
@@ -59,6 +64,16 @@ public class PersonaAR {
 
 	public void setPais(String pais) {
 		this.pais = pais;
+	}
+	
+	
+
+	public List<CompraAR> getListaCompra() {
+		return listaCompra;
+	}
+
+	public void setListaCompra(List<CompraAR> listaCompra) {
+		this.listaCompra = listaCompra;
 	}
 
 	public PersonaAR(String dni, String nombre, String apellidos, int edad, String pais) {
@@ -190,5 +205,76 @@ public class PersonaAR {
 		return persona;
 
 	}
+	
+	public static List<PersonaAR> buscarTodoCompras() {
+
+		List<PersonaAR> listaPersonas = new ArrayList<PersonaAR>();
+
+		try (PreparedStatement sentencia = DataBaseHelper.crearSentenciaPreparada(SELECCIONAR_PERSONAS_COMPRAS, null);
+				Connection conn = sentencia.getConnection();) {
+
+			try (ResultSet rs = sentencia.executeQuery();) {
+
+				PersonaAR persona = null;
+
+				while (rs.next()) {
+
+					// proceso fila a fila
+					// cada fila tiene una persona y una compra
+					if (persona == null || !persona.getDni().equals(rs.getString("dni"))) {
+						persona = new PersonaAR();
+						persona.setDni(rs.getString("dni"));
+						persona.setNombre(rs.getString("nombre"));
+						persona.setApellidos(rs.getString("apellidos"));
+						persona.setEdad(rs.getInt("edad"));
+						persona.setPais(rs.getString("pais"));
+						listaPersonas.add(persona);
+					}
+
+					
+					CompraAR compra = new CompraAR();
+					compra.setDni(rs.getString("dni"));
+					compra.setConcepto(rs.getString("concepto"));
+					compra.setImporte(rs.getDouble("importe"));
+					persona.addCompra(compra);
+					
+				}
+			} catch (SQLException e) {
+				throw new RuntimeException("error de datos", e);
+			}
+
+		} catch (SQLException e) {
+			throw new RuntimeException("error de datos", e);
+		}
+
+		return listaPersonas;
+
+	}
+
+	public void addCompra(CompraAR compra) {
+		listaCompra.add(compra);
+		
+	}
+	
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(dni);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		PersonaAR other = (PersonaAR) obj;
+		return Objects.equals(dni, other.dni);
+	}
+	
+	
+	
 
 }
