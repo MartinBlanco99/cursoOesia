@@ -7,11 +7,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
 public class PersonaAR {
 
 	static final String SELECCIONAR = "SELECT * FROM Personas";
+	static final String SELECCIONAR_COMPRAS = "SELECT * FROM Compras where personas_dni=?";
+	static final String SELECCIONAR_UNA = "SELECT * FROM Personas where dni=?";
 	static final String INSERCION = "Insert into Personas values(?,?,?,?,?)";
 	static final String BORRAR = "DELETE from Personas where dni=?";
 
@@ -74,8 +74,6 @@ public class PersonaAR {
 		super();
 	}
 
-	
-	
 	public PersonaAR(String dni) {
 		super();
 		this.dni = dni;
@@ -130,6 +128,66 @@ public class PersonaAR {
 		} catch (SQLException e) {
 			throw new RuntimeException("error de datos", e);
 		}
+
+	}
+
+	public List<CompraAR> getCompras() {
+
+		List<CompraAR> listaCompras = new ArrayList<CompraAR>();
+
+		try (PreparedStatement sentencia = DataBaseHelper.crearSentenciaPreparada(SELECCIONAR_COMPRAS, getDni());
+				Connection conn = sentencia.getConnection();) {
+
+			try (ResultSet rs = sentencia.executeQuery();) {
+
+				while (rs.next()) {
+					CompraAR compra = new CompraAR();
+					compra.setId(rs.getInt("id"));
+					compra.setConcepto(rs.getString("concepto"));
+					compra.setImporte(rs.getDouble("importe"));
+					compra.setDni(rs.getString("personas_dni"));
+					listaCompras.add(compra);
+				}
+
+			} catch (SQLException e) {
+				throw new RuntimeException("error de datos", e);
+			}
+
+		} catch (SQLException e) {
+			throw new RuntimeException("error de datos", e);
+		}
+
+		return listaCompras;
+
+	}
+
+	public static PersonaAR buscarUna(String dni) {
+
+		PersonaAR persona = new PersonaAR();
+
+		try (PreparedStatement sentencia = DataBaseHelper.crearSentenciaPreparada(SELECCIONAR_UNA, dni);
+				Connection conn = sentencia.getConnection();) {
+
+			try (ResultSet rs = sentencia.executeQuery();) {
+
+				rs.next();
+					
+					persona.setDni(rs.getString("dni"));
+					persona.setNombre(rs.getString("nombre"));
+					persona.setApellidos(rs.getString("apellidos"));
+					persona.setEdad(rs.getInt("edad"));
+					persona.setPais(rs.getString("pais"));
+				
+				
+			} catch (SQLException e) {
+				throw new RuntimeException("error de datos", e);
+			}
+
+		} catch (SQLException e1) {
+			throw new RuntimeException("error de datos", e1);
+		}
+
+		return persona;
 
 	}
 
