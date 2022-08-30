@@ -20,7 +20,10 @@ public class DataBaseHelper {
 				if (parametros[i] instanceof Integer) {
 					sentencia.setInt(i + 1, (Integer) parametros[i]);
 
-				} else {
+				} else if (parametros[i] instanceof Double) {
+					sentencia.setDouble(i + 1, (Double) parametros[i]);
+				}
+				else {
 
 					sentencia.setString(i + 1, (String) parametros[i]);
 				}

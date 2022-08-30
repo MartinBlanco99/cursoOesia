@@ -16,6 +16,16 @@ public class PrincipalCompraAR {
 
 			
 		}
+		
+		//CompraAR c1 = new CompraAR("Reloj",200,"4");
+		//c1.insertar();
+		
+		CompraAR c2 = new CompraAR("Borrar",1000,"60");
+		//c2.insertar();
+		//c2.borrar();
+		
+		CompraAR cBorrar = new CompraAR(1);
+		cBorrar.borrar();
 
 }
 }

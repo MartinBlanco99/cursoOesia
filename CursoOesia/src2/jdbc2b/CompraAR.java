@@ -12,8 +12,8 @@ import java.util.List;
 public class CompraAR {
 
 	static final String SELECCIONAR = "SELECT * FROM Compras";
-	static final String INSERCION = "Insert into Compras values(?,?,?)";
-	static final String BORRAR = "DELETE from Personas where id=?";
+	static final String INSERCION = "Insert into Compras (concepto,importe,personas_dni) values(?,?,?)";
+	static final String BORRAR = "DELETE from Compras where id=?";
 
 	private int id;
 	private String concepto;
@@ -35,11 +35,11 @@ public class CompraAR {
 
 
 
-	public CompraAR(int id, String concepto, double importe) {
+	public CompraAR(String concepto, double importe, String dni) {
 		super();
-		this.id = id;
 		this.concepto = concepto;
 		this.importe = importe;
+		this.dni = dni;
 	}
 	
 	
@@ -107,7 +107,7 @@ public class CompraAR {
 					CompraAR compraAR = new CompraAR();
 					compraAR.setId(rs.getInt("id"));
 					compraAR.setConcepto(rs.getString("concepto"));
-					compraAR.setImporte(rs.getInt("importe"));
+					compraAR.setImporte(rs.getDouble("importe"));
 					compraAR.setDni(rs.getString("personas_dni"));
 					
 					listaCompras.add(compraAR);
@@ -126,7 +126,7 @@ public class CompraAR {
 
 	public void insertar() {
 
-		try (PreparedStatement sentencia = DataBaseHelper.crearSentenciaPreparada(INSERCION, getId(), getConcepto(),
+		try (PreparedStatement sentencia = DataBaseHelper.crearSentenciaPreparada(INSERCION,  getConcepto(),
 				getImporte(), getDni()); Connection conn = sentencia.getConnection();) {
 			sentencia.executeUpdate();
 		} catch (SQLException e) {
