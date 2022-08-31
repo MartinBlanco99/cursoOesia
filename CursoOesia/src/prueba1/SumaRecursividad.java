@@ -1,3 +1,4 @@
+package prueba1;
 import java.util.Scanner;
 
 public class SumaRecursividad {
