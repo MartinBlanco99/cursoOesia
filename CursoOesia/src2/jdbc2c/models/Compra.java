@@ -1,5 +1,7 @@
 package jdbc2c.models;
 
+import java.util.Objects;
+
 public class Compra {
 
 	private int id;
@@ -54,6 +56,25 @@ public class Compra {
 
 	public void setDni(String dni) {
 		this.dni = dni;
+	}
+
+	
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Compra other = (Compra) obj;
+		return id == other.id;
 	}
 
 }

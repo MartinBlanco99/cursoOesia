@@ -135,50 +135,50 @@ public class PersonaRepository  {
 
 	}
 	
-//	public static List<PersonaRepository> buscarTodoCompras() {
-//
-//		List<PersonaRepository> listaPersonas = new ArrayList<PersonaRepository>();
-//
-//		try (PreparedStatement sentencia = DataBaseHelper.crearSentenciaPreparada(SELECCIONAR_PERSONAS_COMPRAS, null);
-//				Connection conn = sentencia.getConnection();) {
-//
-//			try (ResultSet rs = sentencia.executeQuery();) {
-//
-//				PersonaRepository persona = null;
-//
-//				while (rs.next()) {
-//
-//					// proceso fila a fila
-//					// cada fila tiene una persona y una compra
-//					if (persona == null || !persona.getDni().equals(rs.getString("dni"))) {
-//						persona = new PersonaRepository();
-//						persona.setDni(rs.getString("dni"));
-//						persona.setNombre(rs.getString("nombre"));
-//						persona.setApellidos(rs.getString("apellidos"));
-//						persona.setEdad(rs.getInt("edad"));
-//						persona.setPais(rs.getString("pais"));
-//						listaPersonas.add(persona);
-//					}
-//
-//					
-//					Compra compra = new Compra();
-//					compra.setDni(rs.getString("dni"));
-//					compra.setConcepto(rs.getString("concepto"));
-//					compra.setImporte(rs.getDouble("importe"));
-//					persona.addCompra(compra);
-//					
-//				}
-//			} catch (SQLException e) {
-//				throw new RuntimeException("error de datos", e);
-//			}
-//
-//		} catch (SQLException e) {
-//			throw new RuntimeException("error de datos", e);
-//		}
-//
-//		return listaPersonas;
-//
-//	}
+	public static List<Persona> buscarTodoCompras() {
+
+		List<Persona> listaPersonas = new ArrayList<Persona>();
+
+		try (PreparedStatement sentencia = DataBaseHelper.crearSentenciaPreparada(SELECCIONAR_PERSONAS_COMPRAS, null);
+				Connection conn = sentencia.getConnection();) {
+
+			try (ResultSet rs = sentencia.executeQuery();) {
+
+				Persona persona = null;
+
+				while (rs.next()) {
+
+					// proceso fila a fila
+					// cada fila tiene una persona y una compra
+					if (persona == null || !persona.getDni().equals(rs.getString("dni"))) {
+						persona = new Persona();
+						persona.setDni(rs.getString("dni"));
+						persona.setNombre(rs.getString("nombre"));
+						persona.setApellidos(rs.getString("apellidos"));
+						persona.setEdad(rs.getInt("edad"));
+						persona.setPais(rs.getString("pais"));
+						listaPersonas.add(persona);
+					}
+
+					
+					Compra compra = new Compra();
+					compra.setDni(rs.getString("dni"));
+					compra.setConcepto(rs.getString("concepto"));
+					compra.setImporte(rs.getDouble("importe"));
+					persona.addCompra(compra);
+					
+				}
+			} catch (SQLException e) {
+				throw new RuntimeException("error de datos", e);
+			}
+
+		} catch (SQLException e) {
+			throw new RuntimeException("error de datos", e);
+		}
+
+		return listaPersonas;
+
+	}
 
 	
 	

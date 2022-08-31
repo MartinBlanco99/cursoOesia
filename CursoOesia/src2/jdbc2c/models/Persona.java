@@ -11,6 +11,7 @@ public class Persona {
 	private String apellidos;
 	private int edad;
 	private String pais;
+	private List<Compra> compras = new ArrayList<Compra>();
 
 	public Persona(String dni, String nombre, String apellidos, int edad, String pais) {
 		super();
@@ -68,6 +69,19 @@ public class Persona {
 	public Persona(String dni) {
 		super();
 		this.dni = dni;
+	}
+
+	public List<Compra> getCompras() {
+		return compras;
+	}
+
+	public void setCompras(List<Compra> compras) {
+		this.compras = compras;
+	}
+
+	public void addCompra(Compra c) {
+
+		compras.add(c);
 	}
 
 	@Override
