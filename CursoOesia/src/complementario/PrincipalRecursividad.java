@@ -1,6 +1,6 @@
 package complementario;
 
-public class PrindipalRecursividad {
+public class PrincipalRecursividad {
 
 	public static void main(String[] args) {
 
