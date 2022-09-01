@@ -1,4 +1,4 @@
-package jdbc2d.repositories.db;
+package jdbc2d.repositories.jdbc.config;
 
 import java.io.File;
 import java.io.FileInputStream;
