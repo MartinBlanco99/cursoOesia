@@ -1,4 +1,4 @@
-factura,100,importe,200,pagada,1
-factura,101,importe,50,pagada,1
-factura,102,importe,60,pagada,1
-factura,103,importe,2000,pagada,1
+F-AB101,factura,100,importe,200,pagada,1
+F-AB2,factura,101,importe,50,pagada,1
+FAB3BC,factura,102,importe,60,pagada,1
+F-CB1,factura,103,importe,2000,pagada,1
