@@ -15,4 +15,12 @@ public interface IPersonaRepository {
 
 	void borrar(Persona p);
 
+	double calcularEdadMedia();
+
+	//void countEdad();
+
+	double edadMinima();
+
+	double edadMaxima();
+
 }
