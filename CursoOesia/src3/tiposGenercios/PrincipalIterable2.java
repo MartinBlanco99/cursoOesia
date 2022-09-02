@@ -22,16 +22,9 @@ public class PrincipalIterable2 {
 		
 		System.out.println();
 		
-		Iterator<String> iterador = b.iterator();
-		while (iterador.hasNext()) {
-
-			System.out.println(iterador.next());
-			iterador.remove();
-		}
-
-		for (String elemento : b) {
-
-			System.out.println(elemento);
+		Iterator<String> iteraror = b.iterator();
+		while(iteraror.hasNext()) {
+			System.out.println(iteraror.next());
 		}
 
 	}
