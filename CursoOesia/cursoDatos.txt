@@ -1,0 +1,3 @@
+yo juan suarez con dni 12345678  he pagado 20 euros por el curso de java
+
+yo luis perez con dni 9874563B  he pagado 15 euros por el curso de .net
