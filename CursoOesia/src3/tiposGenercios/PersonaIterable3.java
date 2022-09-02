@@ -1,6 +1,9 @@
 package tiposGenercios;
 
-public class PersonaIterable3 implements Comparable<PersonaIterable3> {
+public class PersonaIterable3 
+//implements Comparable<PersonaIterable3> 
+
+{
 
 	private String nombre;
 	private int edad;
@@ -32,10 +35,10 @@ public class PersonaIterable3 implements Comparable<PersonaIterable3> {
 		this.edad = edad;
 	}
 
-	@Override
-	public int compareTo(PersonaIterable3 o) {
-		// TODO Auto-generated method stub
-		return this.getNombre().compareTo(o.getNombre());
-	}
+//	@Override
+//	public int compareTo(PersonaIterable3 o) {
+//		// TODO Auto-generated method stub
+//		return this.getNombre().compareTo(o.getNombre());
+//	}
 
 }
