@@ -1,4 +1,4 @@
-package lambdas.lambda1;
+package lambdas.streams;
 
 public class Persona implements Comparable<Persona> {
 
