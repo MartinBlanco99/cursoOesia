@@ -1,4 +1,4 @@
-package lambdas.Impresora;
+package lambdas.impresora;
 
 public class ImpresoraLaser implements Impresora {
 
