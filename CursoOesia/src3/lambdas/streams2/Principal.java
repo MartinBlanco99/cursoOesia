@@ -2,6 +2,7 @@ package lambdas.streams2;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 public class Principal {
@@ -39,6 +40,9 @@ public class Principal {
 		flujo2.map((persona) -> persona.getListaLibros()).flatMap((libros) -> libros.stream()).map(Libro::getPrecio)
 				.forEach(System.out::println);
 
+		
+		//Stream<Persona> flujo3 = listaPersonas.stream();
+		
 	}
 
 }
