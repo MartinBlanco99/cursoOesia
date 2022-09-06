@@ -1,4 +1,4 @@
-package lambdas;
+package lambdas.personas;
 
 import java.util.function.Predicate;
 

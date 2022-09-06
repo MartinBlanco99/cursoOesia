@@ -1,4 +1,4 @@
-package lambdas;
+package lambdas.personas;
 
 @FunctionalInterface
 public interface Filtro<T> {

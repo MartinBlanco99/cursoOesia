@@ -10,7 +10,7 @@ public class Principal {
 	public static void main(String[] args) {
 		List<Persona> listaPersonas = new ArrayList<Persona>();
 
-		Persona p = new Persona("julian", "blanco", 20);
+		Persona p = new Persona("julian", "blanco", 18);
 		Persona p1 = new Persona("rosa", "lopez", 2);
 		Persona p2 = new Persona("mencia", "suarez", 32);
 		Persona p3 = new Persona("victor", "gimenez", 42);
@@ -40,9 +40,16 @@ public class Principal {
 		flujo2.map((persona) -> persona.getListaLibros()).flatMap((libros) -> libros.stream()).map(Libro::getPrecio)
 				.forEach(System.out::println);
 
-		
-		//Stream<Persona> flujo3 = listaPersonas.stream();
-		
+		System.out.println();
+
+		Stream<Persona> flujo3 = listaPersonas.stream();
+		flujo3.map(Persona::getListaLibros).flatMap((libros) -> libros.stream()).map(Libro::getPrecio)
+				.forEach(System.out::println);
+
+		System.out.println();
+
+		Predicate<Persona> pp = (Persona personita) -> personita.getEdad() > 20;
+		System.out.println(pp.test(p));
 	}
 
 }

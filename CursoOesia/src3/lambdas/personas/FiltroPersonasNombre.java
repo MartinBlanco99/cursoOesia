@@ -1,10 +1,10 @@
-package lambdas;
+package lambdas.personas;
 
-public class FiltroPersonasNombre2 implements Filtro<Persona> {
+public class FiltroPersonasNombre implements FiltroPersonas {
 
 	private String nombre;
 
-	public FiltroPersonasNombre2(String nombre) {
+	public FiltroPersonasNombre(String nombre) {
 		super();
 		this.nombre = nombre;
 	}
