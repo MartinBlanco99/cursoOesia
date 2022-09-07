@@ -20,4 +20,11 @@ class FacturaTest {
 		Factura f = new Factura(1, "Cama", 200);
 		assertEquals(30, f.getImporteRetencion());
 	}
+	
+	@Test
+	@DisplayName ("Calcular importe con descuento")
+	void calcularImporteConDescuento() {
+		Factura f = new Factura(1, "Cama", 200);
+		assertEquals(170, f.getImporteConDescuento());
+	}
 }
