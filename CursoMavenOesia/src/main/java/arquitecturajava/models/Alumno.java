@@ -51,5 +51,12 @@ public class Alumno {
 		}
 		return total / notasLista.size() >= 5;
 	}
+	
+//	public void getNotaMayor() {
+//		int notaMayor;
+//		if(notasLista.)
+//		
+//		notasLista.get(0);
+//	}
 
 }
