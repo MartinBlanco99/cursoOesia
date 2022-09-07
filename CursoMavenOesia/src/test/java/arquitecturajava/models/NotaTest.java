@@ -1,10 +1,20 @@
 package arquitecturajava.models;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class NotaTest {
+//	@Test
+//	public void notaNoValidaTest() {
+//
+//		RuntimeException excepcion = Assertions.assertThrows(RuntimeException.class, () -> {
+//			Nota nota = new Nota(-2, "matematicas");
+//		});
+//
+//		assertEquals("valor de nota no valido", excepcion.getMessage());
+//	}
 
 	@Test
 	public void muyDefcienteTest() {
@@ -47,4 +57,5 @@ class NotaTest {
 		String calificacion = n.getCalificacion();
 		assertEquals("Sobresaliente", calificacion);
 	}
+
 }

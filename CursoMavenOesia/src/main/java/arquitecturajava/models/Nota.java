@@ -14,7 +14,8 @@ public class Nota {
 		return valor;
 	}
 
-	public void setNota(int valor) {
+	public void setValor(int valor) {
+		if (valor<0 || valor>10) throw new RuntimeException("valor de nota no valido");
 		this.valor = valor;
 	}
 
