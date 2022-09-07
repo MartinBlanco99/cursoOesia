@@ -9,21 +9,21 @@ class FacturaTest {
 
 	@Test
 	@DisplayName ("Calcular importe con IVA")
-	void calcularImporteIVA() {
+	public void calcularImporteIVA() {
 		Factura f = new Factura(1, "Cama", 200);
 		assertEquals(242, f.getImporteConIVA());
 	}
 
 	@Test
 	@DisplayName ("Calcular retencion de la factura")
-	void calcularRetencionFactura() {
+	public void calcularRetencionFactura() {
 		Factura f = new Factura(1, "Cama", 200);
 		assertEquals(30, f.getImporteRetencion());
 	}
 	
 	@Test
 	@DisplayName ("Calcular importe con descuento")
-	void calcularImporteConDescuento() {
+	public void calcularImporteConDescuento() {
 		Factura f = new Factura(1, "Cama", 200);
 		assertEquals(170, f.getImporteConDescuento());
 	}

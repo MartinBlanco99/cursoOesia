@@ -9,7 +9,7 @@ class CalculadoraTest {
 
 	@Test
 	@DisplayName("Calculadora suma dos numeros")
-	void sumaCalculadoratest() {
+	public void sumaCalculadoratest() {
 		double num1 = 8;
 		double num2 = 26;
 		Calculadora c = new Calculadora();
@@ -20,7 +20,7 @@ class CalculadoraTest {
 	@Test
 	@DisplayName("Calculadora resta dos numeros")
 
-	void restaCalculadoraTest() {
+	public void restaCalculadoraTest() {
 		double num1 = 22;
 		double num2 = 10;
 		Calculadora c = new Calculadora();
@@ -32,7 +32,7 @@ class CalculadoraTest {
 	@Test
 	@DisplayName("Calculadora multiplica dos numeros")
 
-	void multiplicacionCalculadoraTest() {
+	public void multiplicacionCalculadoraTest() {
 		double num1 = 5;
 		double num2 = 6;
 		Calculadora c = new Calculadora();
@@ -43,7 +43,7 @@ class CalculadoraTest {
 	@Test
 	@DisplayName("Calculadora divide dos numeros")
 
-	void divisionCalculadoraTest() {
+	public void divisionCalculadoraTest() {
 		double num1 = 10;
 		double num2 = 2;
 		Calculadora c = new Calculadora();
