@@ -26,11 +26,11 @@ class AlumnoTest {
 
 	@Test
 	public void addNotaTest() {
-		//a.addNota(new Nota2(6, "frances"));
-		Nota2 n0 = new Nota2(5, "galego");
-		a.addNota(n0);
-		//assertEquals(3, a.getNotasLista().size());
-		assertTrue(a.getNotasLista().contains(n0));
+		a.addNota(new Nota2(6, "frances"));
+		//Nota2 n0 = new Nota2(5, "galego");
+		//a.addNota(n0);
+		assertEquals(3, a.getNotasLista().size());
+		//assertTrue(a.getNotasLista().contains(n0));
 	}
 
 	@Test
