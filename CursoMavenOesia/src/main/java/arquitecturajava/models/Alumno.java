@@ -47,7 +47,7 @@ public class Alumno {
 		double total = 0;
 
 		for (Nota2 n : notasLista) {
-			total = n.getValor();
+			total += n.getValor();
 		}
 		return total / notasLista.size() >= 5;
 	}
