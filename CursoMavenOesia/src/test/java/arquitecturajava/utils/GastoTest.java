@@ -17,5 +17,12 @@ class GastoTest {
 		Gasto gasto = new Gasto(200);
 		assertEquals(60, gasto.getImporte4Cuotas());
 	}
+	
+	@Test
+	void variablesCuotasTest() {
+		Gasto gasto = new Gasto(200);
+		assertEquals(30.5, gasto.getImporteCuotas(7), 0.2);
+	}
+
 
 }

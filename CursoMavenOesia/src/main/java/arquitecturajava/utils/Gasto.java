@@ -24,4 +24,13 @@ public class Gasto {
 		return importe / 4 * 1.20;
 	}
 
+	public double getImporteCuotas(int cuotas) {
+		if (cuotas < 5) {
+			return importe / cuotas;
+		} else if (cuotas >= 5 && cuotas < 10) {
+			return importe / cuotas + 2;
+		} else
+			return importe / cuotas + 10;
+	}
+
 }

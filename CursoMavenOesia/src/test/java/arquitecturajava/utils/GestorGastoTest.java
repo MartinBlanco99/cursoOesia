@@ -1,6 +1,9 @@
 package arquitecturajava.utils;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.Test;
 
@@ -8,20 +11,36 @@ class GestorGastoTest {
 
 	@Test
 	void getImporte2CuotasTest() {
-		Gasto g1 = new Gasto(200);
-		Gasto g2 = new Gasto(100);
+		Gasto g1 = mock(Gasto.class);
+		Gasto g2 = mock(Gasto.class);
+		
+
 		GestorGasto gestorGasto = new GestorGasto(g1, g2);
 		
-		assertEquals(155, gestorGasto.getImporte2Cuotas());
+		when(g1.getImporte2Cuotas()).thenReturn(50.0);
+		when(g2.getImporte2Cuotas()).thenReturn(50.0);
+
+		assertEquals(105, gestorGasto.getImporte2Cuotas());
+		
+		verify(g1).getImporte2Cuotas();
+		verify(g2).getImporte2Cuotas();
 	}
 	
 	@Test
 	void getImporte4CuotasTest() {
-		Gasto g1 = new Gasto(200);
-		Gasto g2 = new Gasto(100);
+		Gasto g1 = mock(Gasto.class);
+		Gasto g2 = mock(Gasto.class);
+		
+
 		GestorGasto gestorGasto = new GestorGasto(g1, g2);
 		
-		assertEquals(95, gestorGasto.getImporte4Cuotas());
+		when(g1.getImporte4Cuotas()).thenReturn(50.0);
+		when(g2.getImporte4Cuotas()).thenReturn(50.0);
+
+		assertEquals(105, gestorGasto.getImporte4Cuotas());
+		
+		verify(g1).getImporte4Cuotas();
+		verify(g2).getImporte4Cuotas();
 	}
 
 }
