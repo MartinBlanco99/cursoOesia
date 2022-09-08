@@ -1,6 +1,7 @@
 package arquitecturajava.utils;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -48,9 +49,14 @@ class GestorGastoTest {
 
 		GestorGasto gestorGasto = new GestorGasto(g1, g2);
 
-		when(g1.getImporteCuotas(3)).thenReturn(50.0);
-		when(g2.getImporteCuotas(3)).thenReturn(50.0);
+		//when(g1.getImporteCuotas(3)).thenReturn(50.0);
+		//when(g2.getImporteCuotas(3)).thenReturn(50.0);
 
+		when(g1.getImporteCuotas(anyInt())).thenReturn(50.0);
+		when(g2.getImporteCuotas(anyInt())).thenReturn(50.0);
+
+
+		
 		assertEquals(105, gestorGasto.getImporteCuotas(3));
 
 		// verify(g1).getImporteCuotas();
