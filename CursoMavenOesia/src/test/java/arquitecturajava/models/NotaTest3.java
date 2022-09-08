@@ -24,7 +24,7 @@ public class NotaTest3 {
 	}
 
 	@ParameterizedTest
-	@DisplayName("Nota insuficiente valor:2 standar valor: 0,3 limites nota")
+	@DisplayName("Nota insuficiente valor:2 standar valor: 0,1 limites nota")
 	@ValueSource(doubles = { 2, 0, 1 })
 	public void muyDeficienteTest(double valorNota) {
 
