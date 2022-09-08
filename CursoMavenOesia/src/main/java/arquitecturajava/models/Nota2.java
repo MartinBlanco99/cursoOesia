@@ -5,11 +5,17 @@ import java.util.Objects;
 public class Nota2 {
 	private double valor;
 	private String asignatura;
+	
+	
+
+	public Nota2() {
+		super();
+	}
 
 	public Nota2(double valor, String asignatura) {
 		super();
-		this.valor = valor;
-		this.asignatura = asignatura;
+		this.setValor(valor);
+		this.setAsignatura(asignatura);;
 	}
 
 	public double getValor() {

@@ -73,4 +73,19 @@ public class Alumno {
 		return suspensos;
 	}
 
+	public double getNumeroSobreSalientes() {
+
+		int total = 0;
+
+		for (Nota2 n : notasLista) {
+
+			if (n.getCalificacion().equals("Sobresaliente")) {
+
+				total++;
+			}
+		}
+
+		return total;
+
+	}
 }
