@@ -1,0 +1,40 @@
+package arquitecturajava.proyecto1.repositories.memory;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import arquitecturajava.proyecto1.models.Persona;
+import arquitecturajava.proyecto1.repositories.IPersonaRepository;
+
+public class PersonaRepositoryMemory implements IPersonaRepository {
+
+	private static List<Persona> lista = new ArrayList<Persona>();
+	static {
+		lista.add(new Persona("pepe", 20));
+		lista.add(new Persona("ana", 40));
+		lista.add(new Persona("maria", 30));
+	}
+
+	@Override
+	public List<Persona> buscarTodos() {
+		return lista;
+	}
+
+	@Override
+	public void insertar(Persona persona) {
+		lista.add(persona);
+	}
+
+	@Override
+	public void borrar(Persona persona) {
+		lista.remove(persona);
+	}
+
+	@Override
+	public Optional<Persona> buscarUno(String nombre) {
+		return lista.stream().filter((p) -> p.getNombre().equals(nombre)).findFirst();
+
+	}
+
+}
