@@ -48,11 +48,8 @@ class PersonaRepositoryMemoryTest {
 
 	@Test
 	public void borrarPersonaTest() {
-		List<Persona> lista = repo.buscarTodos();
-		int total = lista.size();
-		repo.borrar(new Persona("nando", 26));
-		List<Persona> lista2 = repo.buscarTodos();
-		assertEquals(total, lista2.size());
+		repo.borrar(new Persona("nando"));
+		assertFalse(listaInicial.contains(new Persona("nando")));
 
 	}
 
@@ -68,14 +65,6 @@ class PersonaRepositoryMemoryTest {
 
 		Optional<Persona> oPersona2 = repo.buscarUno("mario");
 		assertFalse(oPersona2.isPresent());
-
-	}
-
-	@Test
-	public void borrarUnoTest() {
-
-		repo.borrar(new Persona("pepe"));
-		assertFalse(listaInicial.contains(new Persona("pepe")));
 
 	}
 
