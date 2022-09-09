@@ -15,7 +15,7 @@ public class PersonasService {
 		this.repositorio = repositorio;
 	}
 
-	public List<Persona> buscarTodos() {
+	public List<Persona> buscarTodasLasPersonas() {
 		return repositorio.buscarTodos();
 	}
 
