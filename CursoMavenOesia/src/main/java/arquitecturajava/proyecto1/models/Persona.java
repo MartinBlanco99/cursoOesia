@@ -13,6 +13,15 @@ public class Persona {
 		this.edad = edad;
 	}
 
+	
+
+	public Persona(String nombre) {
+		super();
+		this.nombre = nombre;
+	}
+
+
+
 	public String getNombre() {
 		return nombre;
 	}

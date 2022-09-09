@@ -25,9 +25,9 @@ class PersonaRepositoryMemoryTest {
 	@BeforeEach
 	public void setUp() {
 		listaInicial = new ArrayList<Persona>();
-		listaInicial.add(new Persona("pepe",20));
-		listaInicial.add(new Persona("ana",40));
-		listaInicial.add(new Persona("maria",30));
+		listaInicial.add(new Persona("pepe", 20));
+		listaInicial.add(new Persona("ana", 40));
+		listaInicial.add(new Persona("maria", 30));
 		repo = new PersonaRepositoryMemory(listaInicial);
 	}
 
@@ -35,7 +35,6 @@ class PersonaRepositoryMemoryTest {
 	void buscarTodosTest() {
 		List<Persona> lista = repo.buscarTodos();
 		assertNotNull(lista);
-		assertEquals(3,lista.size());
 		assertArrayEquals(listaInicial.toArray(), lista.toArray());
 	}
 
@@ -43,8 +42,7 @@ class PersonaRepositoryMemoryTest {
 	public void insertarPersonaTest() {
 		Persona p = new Persona("juan", 20);
 		repo.insertar(p);
-		List<Persona> lista2 = repo.buscarTodos();
-		assertTrue(lista2.contains(p));
+		assertTrue(listaInicial.contains(p));
 
 	}
 
@@ -65,11 +63,19 @@ class PersonaRepositoryMemoryTest {
 		if (oPersona.isPresent()) {
 
 			Persona p = oPersona.get();
-			assertEquals(new Persona("pepe",20), p);
+			assertEquals(new Persona("pepe", 20), p);
 		}
 
 		Optional<Persona> oPersona2 = repo.buscarUno("mario");
 		assertFalse(oPersona2.isPresent());
+
+	}
+
+	@Test
+	public void borrarUnoTest() {
+
+		repo.borrar(new Persona("pepe"));
+		assertFalse(listaInicial.contains(new Persona("pepe")));
 
 	}
 

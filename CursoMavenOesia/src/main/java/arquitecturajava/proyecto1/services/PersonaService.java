@@ -6,11 +6,11 @@ import java.util.Optional;
 import arquitecturajava.proyecto1.models.Persona;
 import arquitecturajava.proyecto1.repositories.IPersonaRepository;
 
-public class PersonasService {
-	
+public class PersonaService {
+
 	private IPersonaRepository repositorio;
 
-	public PersonasService(IPersonaRepository repositorio) {
+	public PersonaService(IPersonaRepository repositorio) {
 		super();
 		this.repositorio = repositorio;
 	}
@@ -19,18 +19,18 @@ public class PersonasService {
 		return repositorio.buscarTodos();
 	}
 
-	public void insertar(Persona persona) {
+	public void insertarPersona(Persona persona) {
 		repositorio.insertar(persona);
 	}
 
-	public void borrar(Persona persona) {
+	public void borrarPersona(Persona persona) {
 		repositorio.borrar(persona);
 	}
 
 	public Optional<Persona> buscarUno(String nombre) {
 		return repositorio.buscarUno(nombre);
 	}
-	
+
 	
 
 }
