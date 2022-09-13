@@ -1,6 +1,6 @@
 package arquitecturajava.proyecto2;
 
-public class Tarea implements Runnable {
+public class Tarea2 implements Runnable {
 
 	@Override
 	public void run() {
@@ -12,7 +12,6 @@ public class Tarea implements Runnable {
 				e.printStackTrace();
 			}
 			
-			System.out.println("Tarea nueva " + i);
 		}
 	}
 
