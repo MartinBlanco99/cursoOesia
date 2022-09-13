@@ -1,4 +1,4 @@
-package arquitecturajava.proyecto2;
+package arquitecturajava.proyecto2.tarea;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -6,7 +6,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
-public class Principal7 {
+public class PrincipalCopiarFichero {
 
 	public static void main(String[] args) {
 		Path inicio = Paths.get("inicio/hola.txt");

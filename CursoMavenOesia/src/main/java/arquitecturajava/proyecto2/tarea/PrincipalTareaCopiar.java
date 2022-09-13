@@ -1,4 +1,4 @@
-package arquitecturajava.proyecto2;
+package arquitecturajava.proyecto2.tarea;
 
 public class PrincipalTareaCopiar {
 
