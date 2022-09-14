@@ -15,9 +15,14 @@ public class PrincipalAlumno {
 		
 		Thread thread2 = new Thread(gestorAvisos);
 		
+		
+		GestorAvisos2 gestorAvisos2 = new GestorAvisos2(alumno);
+		Thread thread3 = new Thread(gestorAvisos2);
+
+		
 		thread.start();
 		thread2.start();
-		
+		thread3.start();
 		
 	}
 

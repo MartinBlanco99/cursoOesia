@@ -1,14 +1,13 @@
 package arquitecturajava.proyecto2.alumno;
 
-public class GestorAvisos implements Runnable {
-
+public class GestorAvisos2 implements Runnable {
 	private Alumno alumno;
 
 	public Alumno getAlumno() {
 		return alumno;
 	}
 
-	public GestorAvisos(Alumno alumno) {
+	public GestorAvisos2(Alumno alumno) {
 		super();
 		this.alumno = alumno;
 	}
@@ -19,6 +18,7 @@ public class GestorAvisos implements Runnable {
 
 	@Override
 	public void run() {
+
 		for (int i = 0; i < 50; i++) {
 
 			try {
@@ -27,7 +27,7 @@ public class GestorAvisos implements Runnable {
 
 					alumno.wait();
 					if (alumno.tieneSobresaliente()) {
-						System.out.println("un sobresaliente vamos al cine!!!");
+						System.out.println("un sobresaliente vamos al futbol!!!");
 					}
 
 				}
@@ -39,4 +39,5 @@ public class GestorAvisos implements Runnable {
 		}
 
 	}
+
 }

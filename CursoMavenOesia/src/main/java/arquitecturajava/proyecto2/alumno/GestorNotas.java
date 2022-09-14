@@ -23,7 +23,7 @@ public class GestorNotas implements Runnable {
 
 	@Override
 	public void run() {
-		for (int i = 0; i < 20; i++) {
+		for (int i = 0; i < 50; i++) {
 			try {
 				Thread.sleep(500);
 			} catch (InterruptedException e) {
@@ -33,7 +33,12 @@ public class GestorNotas implements Runnable {
 
 			double valor = Math.random() * 10;
 			System.out.println("Añadiendo nota: " + valor);
-			alumno.addNota(new Nota(valor));
+			
+			
+			synchronized (alumno) {
+				alumno.addNota(new Nota(valor));
+				alumno.notify();
+			}
 		}
 	}
 
